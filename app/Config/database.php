@@ -84,7 +84,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost\SQLExpress',
 		'login' => 'sa',
 		'password' => 'awsadmin',
-		'database' => 'model',
+		'database' => 'dev',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
