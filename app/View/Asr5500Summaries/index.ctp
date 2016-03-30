@@ -1,10 +1,12 @@
-<div class="asr5500_summaries index">
+<div class="index">
 	<h2><?php echo "一覧表示(index)"; ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<thead>
 	<tr>
 		    <th><?php echo $this->Paginator->sort('id'); ?></th>
-		    <th><?php echo $this->Paginator->sort('date'); ?></th>
+		    <th>登録日</th>
+			<!--
+		    <th><?php echo $this->Paginator->sort('date'); ?> </th>
 		    <th><?php echo $this->Paginator->sort('no1'); ?></th>
 		    <th><?php echo $this->Paginator->sort('no2'); ?></th>
 		    <th><?php echo $this->Paginator->sort('no3'); ?></th>
@@ -12,7 +14,9 @@
 		    <th><?php echo $this->Paginator->sort('no5'); ?></th>
 		    <th><?php echo $this->Paginator->sort('no6'); ?></th>
 		    <th><?php echo $this->Paginator->sort('no7'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
+			-->
+			<th class="actions">
+			<?php echo __('Actions'); ?></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -21,6 +25,7 @@
 	<tr>
 		<td><?php echo h($asr5500_summary['Asr5500Summary']['id']); ?>&nbsp;</td>
 		<td><?php echo h($asr5500_summary['Asr5500Summary']['date']); ?>&nbsp;</td>
+		<!--
 		<td><?php echo h($asr5500_summary['Asr5500Summary']['no1']); ?>&nbsp;</td>
 		<td><?php echo h($asr5500_summary['Asr5500Summary']['no2']); ?>&nbsp;</td>
 		<td><?php echo h($asr5500_summary['Asr5500Summary']['no3']); ?>&nbsp;</td>
@@ -28,6 +33,7 @@
 		<td><?php echo h($asr5500_summary['Asr5500Summary']['no5']); ?>&nbsp;</td>
 		<td><?php echo h($asr5500_summary['Asr5500Summary']['no6']); ?>&nbsp;</td>
 		<td><?php echo h($asr5500_summary['Asr5500Summary']['no7']); ?>&nbsp;</td>
+		-->
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $asr5500_summary['Asr5500Summary']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $asr5500_summary['Asr5500Summary']['id'])); ?>
