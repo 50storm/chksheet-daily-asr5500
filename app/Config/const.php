@@ -16,7 +16,7 @@ $config["ACTIONS"] = "Menu";
 $config["INDEX_ACTION"] = "List";
 $config["ADD_ACTION"] = "Add";
 $config["VIEW_ACTION"] = "View";
-$config["EDIT_ACTION"] = "Double Check";
+$config["EDIT_ACTION"] = "Edit";
 $config["DELETE_ACTION"] = "Delete";
 
 

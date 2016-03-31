@@ -6,20 +6,22 @@ class Asr5500SummariesController extends AppController {
 	
 	/**************************************************************
 	scaffoldを使うと、functionを設定してないのもは、自動でテンプレートを作成。
-	deleteは、テンプレートを使用
+	deleteは、テンプレートを使用「物理削除」
 	***************************************************************/
 	public $scaffold;
-	//public $uses = array();　
+	//Modelを定義
+	public $uses = array('Asr5500Summary','Asr5500Holiday');
 	
 	//使うヘルパーの宣言
 	public $helpers = array('Html','Form');
-	   //Paginationの設定
-   public $paginate = array(
+	
+	//Paginationの設定
+    public $paginate = array(
               'Asr5500Summary' => array( //モデルの指定
                          'limit' =>10,   //表示できるデータ数の設定
                          'order' => array('id' => 'desc')   //データを降順に並べる
                )
-   );
+    );
 
 	public function index(){
 		

@@ -33,7 +33,7 @@ $options_chkbox['no8_dblchk'] =   $Asr5500Summary['Asr5500Summary']['no8_dblchk'
 <div class="notes form">
 <?php echo $this->Form->create('ASR5500Summary'); ?>
 	<fieldset>
-		<legend><?php echo __('Double Check:').h($Asr5500Summary['Asr5500Summary']['date']); ?></legend>
+		<legend><?php echo __('Edit:').h($Asr5500Summary['Asr5500Summary']['date']); ?></legend>
 		<?php // echo $this->Form->input('ASR5500Summary.date', array('label' => '日付：', 'dateFormat' => 'YMD', 'minYear'=> date('Y')-1,'maxYear' => date('Y')+1, 'monthNames' => false  )); ?>
 		<?php // echo __('ダブルチェック:').h($Asr5500Summary['Asr5500Summary']['date']);?>
 		<table>
