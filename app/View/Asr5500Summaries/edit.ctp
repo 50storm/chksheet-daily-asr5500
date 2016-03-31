@@ -33,8 +33,9 @@ $options_chkbox['no8_dblchk'] =   $Asr5500Summary['Asr5500Summary']['no8_dblchk'
 <div class="notes form">
 <?php echo $this->Form->create('ASR5500Summary'); ?>
 	<fieldset>
-		<legend><?php echo __('編集画面'); ?></legend>
-<?php echo $this->Form->input('ASR5500Summary.date', array('label' => '日付：', 'dateFormat' => 'YMD', 'minYear'=> date('Y')-1,'maxYear' => date('Y')+1, 'monthNames' => false  )); ?>
+		<legend><?php echo __('Double Check:').h($Asr5500Summary['Asr5500Summary']['date']); ?></legend>
+		<?php // echo $this->Form->input('ASR5500Summary.date', array('label' => '日付：', 'dateFormat' => 'YMD', 'minYear'=> date('Y')-1,'maxYear' => date('Y')+1, 'monthNames' => false  )); ?>
+		<?php // echo __('ダブルチェック:').h($Asr5500Summary['Asr5500Summary']['date']);?>
 		<table>
 		<tr>
 			<th>
@@ -176,10 +177,9 @@ $options_chkbox['no8_dblchk'] =   $Asr5500Summary['Asr5500Summary']['no8_dblchk'
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>
 <div class="actions">
-	<h3><?php echo __('メニュー'); ?></h3>
+	<h3><?php echo __(Configure::read("ACTIONS")); ?></h3>
 	<ul>
-	<li><?php echo $this->Html->link(__('チェックリスト一覧'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Form->postLink(__('メモ削除'), array('action' => 'delete', $this->Form->value('Note.id')), array('confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Note.id')))); ?></li>
-		
+	<li><?php echo $this->Html->link(__(Configure::read("INDEX_ACTION")), array('action' => 'index')); ?></li>
+	<li><?php echo $this->Form->postLink(__(Configure::read("DELETE_ACTION")), array('action' => 'delete', $Asr5500Summary['Asr5500Summary']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $Asr5500Summary['Asr5500Summary']['id']))); ?></li>
 	</ul>
 </div>

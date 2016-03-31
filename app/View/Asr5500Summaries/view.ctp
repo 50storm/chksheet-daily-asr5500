@@ -1,5 +1,5 @@
 <?php
-//debug ($Asr5500Summary);
+/*初期設定などあれば*/
 /*メッセージを組み立てる*/
 $msg['no1'] =   $Asr5500Summary['Asr5500Summary']['no1'] ? "チェック済" : "未チェック";
 $msg['no2'] =   $Asr5500Summary['Asr5500Summary']['no2'] ? "チェック済" : "未チェック";
@@ -154,13 +154,13 @@ $msg['no8_dblchk'] =   $Asr5500Summary['Asr5500Summary']['no8_dblchk'] ? "チェ
 		</table>
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+	<h3><?php  echo __(Configure::read("ACTIONS")); ?></h3>
 	
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Note'), array('action' => 'edit', $Asr5500Summary['Asr5500Summary']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__(Configure::read("EDIT_ACTION")), array('action' => 'edit', $Asr5500Summary['Asr5500Summary']['id'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete Note'), array('action' => 'delete', $Asr5500Summary['Asr5500Summary']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $Asr5500Summary['Asr5500Summary']['id']))); ?> </li>
-		<li><?php echo $this->Html->link(__('List Notes'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Note'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__(Configure::read("INDEX_ACTION")), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__(Configure::read("ADD_ACTION")), array('action' => 'add')); ?> </li>
 	</ul>
 	
 </div>

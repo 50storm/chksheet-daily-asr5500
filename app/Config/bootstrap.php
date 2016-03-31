@@ -109,3 +109,8 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
+/**
+*独自設定読込(const.php)
+*/
+Configure::load("const");

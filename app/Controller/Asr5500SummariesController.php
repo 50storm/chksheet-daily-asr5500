@@ -74,15 +74,15 @@ class Asr5500SummariesController extends AppController {
 			$this->Asr5500Summary->id = $id;
 			//TODO
 			
-			//debug($this->request->data);
+			debug($this->request->data);
 			
-			$input_date = $this->_make_date($this->request->data['ASR5500Summary']['date']['year'], 
-				$this->request->data['ASR5500Summary']['date']['month'],
-				$this->request->data['ASR5500Summary']['date']['day']
-			);
+			//$input_date = $this->_make_date($this->request->data['ASR5500Summary']['date']['year'], 
+			//	$this->request->data['ASR5500Summary']['date']['month'],
+			//	$this->request->data['ASR5500Summary']['date']['day']
+			//);
 			
 			$this->Asr5500Summary->set(array( 
-								   'date'       => $input_date,
+								   //'date'       => $input_date,
 								   'no1'        => $this->request->data['ASR5500Summary']['no1'],
 								   'no2'        => $this->request->data['ASR5500Summary']['no2'],
 								   'no3'        => $this->request->data['ASR5500Summary']['no3'],

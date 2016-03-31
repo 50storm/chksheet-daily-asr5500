@@ -8,7 +8,7 @@ $options_chkbox=array('div' => false, 'label'=> false , 'type' => 'checkbox');
 <?php echo $this->Form->create('ASR5500Summary'); ?>
 	<fieldset>
 	<legend><?php echo __('チェックリスト'); ?></legend>
-		<?php echo $this->Form->input('ASR5500Summary.date', array('label' => '日付：', 'dateFormat' => 'YMD', 'minYear'=> date('Y')-1,'maxYear' => date('Y')+1, 'monthNames' => false  )); ?>
+		<?php echo $this->Form->input('ASR5500Summary.date', array('label' => 'Date:', 'dateFormat' => 'YMD', 'minYear'=> date('Y')-1,'maxYear' => date('Y')+1, 'monthNames' => false  )); ?>
 		<table>
 		<tr>
 			<th>
