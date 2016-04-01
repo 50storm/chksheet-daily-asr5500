@@ -2,27 +2,34 @@
 /*初期設定などあれば*/
 /*メッセージを組み立てる*/
 //debug($Asr5500Chksheet);
-$msg['no1'] =   $Asr5500Chksheet['Asr5500Chksheet']['no1'] ? "チェック済" : "未チェック";
-$msg['no2'] =   $Asr5500Chksheet['Asr5500Chksheet']['no2'] ? "チェック済" : "未チェック";
-$msg['no3'] =   $Asr5500Chksheet['Asr5500Chksheet']['no3'] ? "チェック済" : "未チェック";
-$msg['no4'] =   $Asr5500Chksheet['Asr5500Chksheet']['no4'] ? "チェック済" : "未チェック";
-$msg['no5'] =   $Asr5500Chksheet['Asr5500Chksheet']['no5'] ? "チェック済" : "未チェック";
-$msg['no6'] =   $Asr5500Chksheet['Asr5500Chksheet']['no6'] ? "チェック済" : "未チェック";
-$msg['no7'] =   $Asr5500Chksheet['Asr5500Chksheet']['no7'] ? "チェック済" : "未チェック";
-$msg['no8'] =   $Asr5500Chksheet['Asr5500Chksheet']['no8'] ? "チェック済" : "未チェック";
+$options_chkbox_unchecked =array('div' => false, 'label'=> false , 'type' => 'checkbox', 'checked' =>false , 'disabled'=>'disabled' );
+$options_chkbox_checked   =array('div' => false, 'label'=> false , 'type' => 'checkbox', 'checked' =>true  , 'disabled'=>'disabled' );
+$options_chkbox;
 
-$msg['no1_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no1_dblchk'] ? "チェック済" : "未チェック";
-$msg['no2_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no2_dblchk'] ? "チェック済" : "未チェック";
-$msg['no3_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no3_dblchk'] ? "チェック済" : "未チェック";
-$msg['no4_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no4_dblchk'] ? "チェック済" : "未チェック";
-$msg['no5_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no5_dblchk'] ? "チェック済" : "未チェック";
-$msg['no6_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no6_dblchk'] ? "チェック済" : "未チェック";
-$msg['no7_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no7_dblchk'] ? "チェック済" : "未チェック";
-$msg['no8_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no8_dblchk'] ? "チェック済" : "未チェック";
+$options_chkbox['no1'] =   $Asr5500Chksheet['Asr5500Chksheet']['no1'] ? $options_chkbox_checked : $options_chkbox_unchecked ;
+$options_chkbox['no2'] =   $Asr5500Chksheet['Asr5500Chksheet']['no2'] ? $options_chkbox_checked : $options_chkbox_unchecked ;
+$options_chkbox['no3'] =   $Asr5500Chksheet['Asr5500Chksheet']['no3'] ? $options_chkbox_checked : $options_chkbox_unchecked ;
+$options_chkbox['no4'] =   $Asr5500Chksheet['Asr5500Chksheet']['no4'] ? $options_chkbox_checked : $options_chkbox_unchecked ;
+$options_chkbox['no5'] =   $Asr5500Chksheet['Asr5500Chksheet']['no5'] ? $options_chkbox_checked : $options_chkbox_unchecked ;
+$options_chkbox['no6'] =   $Asr5500Chksheet['Asr5500Chksheet']['no6'] ? $options_chkbox_checked : $options_chkbox_unchecked ;
+$options_chkbox['no7'] =   $Asr5500Chksheet['Asr5500Chksheet']['no7'] ? $options_chkbox_checked : $options_chkbox_unchecked ;
+$options_chkbox['no8'] =   $Asr5500Chksheet['Asr5500Chksheet']['no8'] ? $options_chkbox_checked : $options_chkbox_unchecked ;
+
+$options_chkbox['no1_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no1_dblchk'] ? $options_chkbox_checked  : $options_chkbox_unchecked ;
+$options_chkbox['no2_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no2_dblchk'] ? $options_chkbox_checked  : $options_chkbox_unchecked ;
+$options_chkbox['no3_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no3_dblchk'] ? $options_chkbox_checked  : $options_chkbox_unchecked ;
+$options_chkbox['no4_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no4_dblchk'] ? $options_chkbox_checked  : $options_chkbox_unchecked ;
+$options_chkbox['no5_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no5_dblchk'] ? $options_chkbox_checked  : $options_chkbox_unchecked ;
+$options_chkbox['no6_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no6_dblchk'] ? $options_chkbox_checked  : $options_chkbox_unchecked ;
+$options_chkbox['no7_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no7_dblchk'] ? $options_chkbox_checked  : $options_chkbox_unchecked ;
+$options_chkbox['no8_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no8_dblchk'] ? $options_chkbox_checked  : $options_chkbox_unchecked ;
+
 
 ?>
 <div class="view">
-	<h2><?php echo __('ダブルチェック状況:').h($Asr5500Chksheet['Asr5500Chksheet']['date']);?></h2>
+<?php echo $this->Form->create(); ?>
+	<fieldset>
+		<legend><?php echo __('View:').h($Asr5500Chksheet['Asr5500Chksheet']['date']); ?></legend>
 		<table>
 		<tr>
 			<th>
@@ -46,26 +53,28 @@ $msg['no8_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no8_dblchk'] ? "チ�
 				日付は当日になっているか？
 			</td>
 			<td>
-				<?php echo $msg['no1']  ;?>
+				<?php echo $this->Form->input('ASR5500Chksheet.no1', $options_chkbox['no1'] ); ?>
 			</td>
 			<td>
-				<?php echo $msg['no1_dblchk']  ;?>
+				<?php echo $this->Form->input('ASR5500Chksheet.no1_dblchk', $options_chkbox['no1_dblchk'] ); ?>
 			</td>
 		</tr>
+	
 		<tr>
 			<td>
 				本文
 			</td>
 			<td>
-				【手動】コロンを付与したか？[Summary]CQAP:ASR5500 
+				【手動】コロンを付与したか？[Summary]CQAP:ASR5500
 			</td>
 			<td>
-				<?php echo $msg['no2']  ;?>
+				<?php echo $this->Form->input('ASR5500Chksheet.no2', $options_chkbox['no2'] );  ?>
 			</td>
 			<td>
-				<?php echo $msg['no2_dblchk']  ;?>
+				<?php echo $this->Form->input('ASR5500Chksheet.no2_dblchk', $options_chkbox['no2_dblchk']  ); ?>
 			</td>
 		</tr>
+	
 		<tr>
 			<td>
 				本文
@@ -74,10 +83,10 @@ $msg['no8_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no8_dblchk'] ? "チ�
 				Inspection QTYの数量は正しいか？
 			</td>
 			<td>
-				<?php echo $msg['no3']  ;?>
+				<?php echo $this->Form->input('ASR5500Chksheet.no3', $options_chkbox['no3'] );  ?>
 			</td>
 			<td>
-				<?php echo $msg['no3_dblchk']  ;?>
+				<?php echo $this->Form->input('ASR5500Chksheet.no3_dblchk', $options_chkbox['no3_dblchk']  ); ?>
 			</td>
 		</tr>
 		<tr>
@@ -88,10 +97,10 @@ $msg['no8_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no8_dblchk'] ? "チ�
 				【手動】HWWNがあるときに、Defect QTYの数量から、HWWNを差し引いたか？
 			</td>
 			<td>
-				<?php echo $msg['no4']  ;?>
+				<?php echo $this->Form->input('ASR5500Chksheet.no4', $options_chkbox['no4'] );  ?>
 			</td>
 			<td>
-				<?php echo $msg['no4_dblchk']  ;?>
+				<?php echo $this->Form->input('ASR5500Chksheet.no4_dblchk', $options_chkbox['no4_dblchk']  ); ?>
 			</td>
 		</tr>
 		<tr>
@@ -102,10 +111,10 @@ $msg['no8_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no8_dblchk'] ? "チ�
 				Defect QTYの数量は正しいか？
 			</td>
 			<td>
-				<?php echo $msg['no5']  ;?>
+				<?php echo $this->Form->input('ASR5500Chksheet.no5', $options_chkbox['no5'] );  ?>
 			</td>
 			<td>
-				<?php echo $msg['no5_dblchk']  ;?>
+				<?php echo $this->Form->input('ASR5500Chksheet.no5_dblchk', $options_chkbox['no5_dblchk']  ); ?>
 			</td>
 		</tr>
 		<tr>
@@ -116,10 +125,10 @@ $msg['no8_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no8_dblchk'] ? "チ�
 				FYI　QTYの数量は正しいか？
 			</td>
 			<td>
-				<?php echo $msg['no6']  ;?>
+				<?php echo $this->Form->input('ASR5500Chksheet.no6', $options_chkbox['no6'] );  ?>
 			</td>
 			<td>
-				<?php echo $msg['no6_dblchk']  ;?>
+				<?php echo $this->Form->input('ASR5500Chksheet.no6_dblchk', $options_chkbox['no6_dblchk']  ); ?>
 			</td>
 		</tr>
 		<tr>
@@ -130,10 +139,10 @@ $msg['no8_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no8_dblchk'] ? "チ�
 				検査した期間のFrom日付とTo日付は正しいか？
 			</td>
 			<td>
-				<?php echo $msg['no7']  ;?>
+				<?php echo $this->Form->input('ASR5500Chksheet.no7', $options_chkbox['no7'] );  ?>
 			</td>
 			<td>
-				<?php echo $msg['no7_dblchk']  ;?>
+				<?php echo $this->Form->input('ASR5500Chksheet.no7_dblchk', $options_chkbox['no7_dblchk']  ); ?>
 			</td>
 		</tr>
 		<tr>
@@ -144,15 +153,15 @@ $msg['no8_dblchk'] =   $Asr5500Chksheet['Asr5500Chksheet']['no8_dblchk'] ? "チ�
 				機密情報のお願い文は挿入できるか？&nbsp;This mail may contain confidential
 			</td>
 			<td>
-				<?php echo $msg['no8']  ;?>
+				<?php echo $this->Form->input('ASR5500Chksheet.no8', $options_chkbox['no8'] );  ?>
 			</td>
 			<td>
-				<?php echo $msg['no8_dblchk']  ;?>
+				<?php echo $this->Form->input('ASR5500Chksheet.no8_dblchk', $options_chkbox['no8_dblchk']  ); ?>
 			</td>
 		</tr>
-
-		
 		</table>
+	</fieldset>
+<?php echo $this->Form->end(); ?>
 </div>
 <div class="actions">
 	<h3><?php  echo __(Configure::read("ACTIONS")); ?></h3>

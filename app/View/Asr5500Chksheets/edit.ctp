@@ -7,7 +7,6 @@ $options_chkbox_unchecked =array('div' => false, 'label'=> false , 'type' => 'ch
 $options_chkbox_checked   =array('div' => false, 'label'=> false , 'type' => 'checkbox', 'checked' =>true  );
 $options_chkbox;
 
-
 $options_chkbox['no1'] =   $Asr5500Chksheet['Asr5500Chksheet']['no1'] ? $options_chkbox_checked : $options_chkbox_unchecked ;
 $options_chkbox['no2'] =   $Asr5500Chksheet['Asr5500Chksheet']['no2'] ? $options_chkbox_checked : $options_chkbox_unchecked ;
 $options_chkbox['no3'] =   $Asr5500Chksheet['Asr5500Chksheet']['no3'] ? $options_chkbox_checked : $options_chkbox_unchecked ;
