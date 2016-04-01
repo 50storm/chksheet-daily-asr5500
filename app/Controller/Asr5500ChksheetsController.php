@@ -11,10 +11,11 @@ class Asr5500ChksheetsController extends AppController {
 	public $scaffold;
 	//Modelを定義
 	public $uses = array('Asr5500Chksheet');
+	//public $uses = array('Asr5500Summary', '');
 	
 	//使うヘルパーの宣言
 	public $helpers = array('Html','Form');
-	
+	//
 	//Paginationの設定
     public $paginate = array(
               'Asr5500Chksheet' => array( //モデルの指定
@@ -22,6 +23,31 @@ class Asr5500ChksheetsController extends AppController {
                          'order' => array('id' => 'desc')   //データを降順に並べる
                )
     );
+
+//    public $paginate = array(
+//              'Asr5500Summary' => array( //モデルの指定
+//                         'limit' =>10,   //表示できるデータ数の設定
+//                         'order' => array('id' => 'desc')   //データを降順に並べる
+//               )
+//    );
+	
+	//Summary
+//	public function index(){
+//		
+//		//$this->set('schedules' , $this->Schedule->find('all' , $options))
+//		//$options = array(
+//		//				'order' => array('Note.date Desc','Note.time Desc')
+//		//);
+//		//$this->set('notes' , $this->Note->find('all', $options));
+//		
+//		
+//		//debug($this->paginate());
+//		$this->set('asr5500_chksheets',$this->paginate());
+//	}
+	
+	
+
+	
 
 	public function index(){
 		
@@ -94,6 +120,7 @@ class Asr5500ChksheetsController extends AppController {
 			
 		}
 	}
+	
 	//http://book.cakephp.org/2.0/ja/getting-started/cakephp-conventions.html
 	/*日付のSQLを組立る*/
 	protected  function _make_date($year, $month, $day){
@@ -115,10 +142,11 @@ class Asr5500ChksheetsController extends AppController {
 	}
 	
 	public function add(){
-		//debug($this->request->data);
+		debug($this->request->data);
         if ($this->request->is('post')) {
 			/*SQLパラメータを組み立てる*/
 			//日付
+			
 			$input_date = $this->_make_date($this->request->data['ASR5500Chksheet']['date']['year'], 
 							$this->request->data['ASR5500Chksheet']['date']['month'],
 							$this->request->data['ASR5500Chksheet']['date']['day']
@@ -132,6 +160,10 @@ class Asr5500ChksheetsController extends AppController {
 			
 			/*パラメータセットしてSQL実行*/
 		    $this->Asr5500Chksheet->set($params);
+			
+			//$this->Asr5500Chksheet->set($this->request->data);
+			
+			
             if ($this->Asr5500Chksheet->save($this->request->data)) {
                 $this->Flash->success(__('データを登録しました.'));
                 return $this->redirect(array('action' => 'index'));
@@ -139,7 +171,10 @@ class Asr5500ChksheetsController extends AppController {
             $this->Flash->error(__('Unable to add your post.'));
         }
 	}
-//
+	
+
+
+
 //	//http://cakephpクッキング.jp/phpexcel/
 //	//excel出力ためし
 //	public function excel2007() {
