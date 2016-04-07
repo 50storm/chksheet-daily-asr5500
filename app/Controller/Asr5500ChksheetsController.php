@@ -142,7 +142,7 @@ class Asr5500ChksheetsController extends AppController {
 	}
 	
 	public function add(){
-		debug($this->request->data);
+		//debug($this->request->data);
         if ($this->request->is('post')) {
 			/*SQLパラメータを組み立てる*/
 			//日付
@@ -157,7 +157,7 @@ class Asr5500ChksheetsController extends AppController {
 			$params_no=array();
 			$params_no = $this->_set_para_no( $this->request->data['ASR5500Chksheet'] );
 			$params = array_merge($params_date, $params_no);
-			
+			debug($params);
 			/*パラメータセットしてSQL実行*/
 		    $this->Asr5500Chksheet->set($params);
 			
@@ -172,7 +172,18 @@ class Asr5500ChksheetsController extends AppController {
         }
 	}
 	
+	public function beforeFilter() {
+		parent::beforeFilter();
+		    $cqap_member = array(
+				"野田" => "野田", 
+				"岡田（トシ）" => "岡田(トシ)", 
+				"中林" => "中林", 
+				"古川" => "古川", 
+				"五十嵐" => "五十嵐"
+				);
+			$this->set('cqap_member', $cqap_member);
 
+	}
 
 
 //	//http://cakephpクッキング.jp/phpexcel/

@@ -38,6 +38,12 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
+		//Add Igarashi
+		//<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+		//<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+		echo $this->Html->script("http://code.jquery.com/ui/1.9.2/jquery-ui.js");
+		echo $this->Html->css( '//code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css');
+		
 	?>
 </head>
 <body>

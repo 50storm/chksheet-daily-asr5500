@@ -20,6 +20,7 @@
  */
 
 App::uses('Controller', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 
 /**
  * Application Controller
@@ -31,4 +32,30 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+	
+	//Page 933
+	/*
+	public $components = array(
+		'Flash',
+		'Auth' => array(
+			'loginRedirect' => array(
+			'controller' => 'posts',
+			'action' => 'index'
+		),
+		'logoutRedirect' => array(
+			'controller' => 'pages',
+			'action' => 'display',
+			'home'
+		),
+		'authenticate' => array(
+			'Form' => array(
+			'passwordHasher' => 'Blowfish'
+			)
+			)
+		)
+	);
+	*/
+	public function beforeFilter() {
+		//$this->Auth->allow('index', 'view');
+	}	
 }
