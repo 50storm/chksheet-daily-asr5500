@@ -573,8 +573,8 @@ foreach($Asr5500Chksheet['Asr5500Chksheet'] as $key => $value ){
 		</table>			
 	</fieldset>
 <?php //echo $this->Form->end(); ?>
-<?php echo $this->Form->input('ASR5500Chksheet.email_to', $options_mail_2 ); ?>
-<?php echo $this->Form->input('ASR5500Chksheet.email_from', $options_mail_1 ); ?>
+<?php echo $this->Form->input('ASR5500Chksheet.email_to', $options_mail_1 ); ?>
+<?php echo $this->Form->input('ASR5500Chksheet.email_from', $options_mail_2 ); ?>
 <?php echo $this->Form->submit(__('ダブルチェックお願い'), array('name' => 'mail_to_checker')); ?>
 </div>
 <div class="actions">
