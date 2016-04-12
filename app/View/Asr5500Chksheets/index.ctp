@@ -74,7 +74,8 @@
 		<li><?php echo $this->Html->link(__('Excel出力[未実装]'), array('action' => 'excel2007')); ?></li>
 		<li><?php echo $this->Html->link(__('PDF出力GETパラメーター[未実装]'), array('action' => 'menu_download_pdf')); ?></li>
 		<li><?php echo $this->Html->link(__('PDF出力[未実装]'), array('action' => 'menu_download_pdf_link')); ?></li>
-		-->
 		<li><?php echo $this->Html->link(__('Mail送信[未実装]'), array('controller'=>'emails' , 'action' => 'send')); ?></li>
+		
+		-->
 	</ul>
 </div>

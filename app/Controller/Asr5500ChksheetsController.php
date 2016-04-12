@@ -9,13 +9,17 @@ class Asr5500ChksheetsController extends AppController {
 	deleteは、テンプレートを使用「物理削除」
 	***************************************************************/
 	public $scaffold;
+	//コンポーネント定義
+	//public $components = array('Cqap');
+	
+	
 	//Modelを定義
 	public $uses = array('Asr5500Chksheet');
 	//public $uses = array('Asr5500Summary', '');
 	
 	//使うヘルパーの宣言
 	public $helpers = array('Html','Form');
-	//
+	
 	//Paginationの設定
     public $paginate = array(
               'Asr5500Chksheet' => array( //モデルの指定
@@ -72,25 +76,20 @@ class Asr5500ChksheetsController extends AppController {
 			//exit;
 		}else{
 			//TODO:
-			
-			
-			
-			
 			if(isset($this->request->data['mail_to_checker'])) {
 				//メール送信の場合
 				//TODO:try~catch入れる
 				
-				
-				
 				//echo "メール送信の場合";
+				//選択されたメアドを取得
 				$email_to =  $this->request->data['ASR5500Chksheet']['email_to'];
 				$email_to_name;
 				$email_from =  $this->request->data['ASR5500Chksheet']['email_from'];
 				
-				
-				
+				//
+				//TODO:どこかにまとめる
+				//
 				$email_cqap  = Configure::read("CQAP_MEMBER_EMAIL");
-				//debug($adds);exit;
 				foreach($email_cqap as $key => $value){
 					if( $email_to === $key){
 						$email_to_name = $value."さん";
@@ -102,25 +101,14 @@ class Asr5500ChksheetsController extends AppController {
 				
 				//debug(Router::url('/asr5500chksheets/edit/', true));
 				$url = Router::url('/asr5500chksheets/edit/', true).$id;
-				
-				//exit;
-				
 				//mail.phpのセッティングを使う
 				$email = new CakeEmail('smtp');
-				//debug($email);
-				//exit;
-				
-				//$email->transport('Smtp');
-				
 				$email->from($email_from);
 				$email->to($email_to);
 				$email->subject('[テストメールです。]DailyReport(ASR5500)ダブルチェックのお願い');
 				$email->emailFormat( 'both');
+				
 				//urlを取得して、idをセット
-				//debug($cqap_member_mail);
-				//exit;
-				
-				
 				$body = $email_to_name. '<br/><br/>表題の件<br/>ダブルチェックお願いします<br/>' .$url;
 				$messages=$email->send( $body );
 				//debug($messages);
@@ -141,6 +129,7 @@ class Asr5500ChksheetsController extends AppController {
 	}
 
 	public function edit($id = null) {
+		//debug($this->params);
 		//debug($this->params->pass);
 		//debug($this->request->is('post'));
 		//debug($this->request->is('get'));
@@ -163,35 +152,134 @@ class Asr5500ChksheetsController extends AppController {
 				//editへ自動で戻る
 			
 			}elseif ($this->request->is(array('post', 'put'))) {
-				
-				if(isset($this->request->data['chk_ok'])) {
-						echo "Mail Okの処理";
-						exit;
-				}elseif(isset($this->request->data['chk_decline'])){
-					//chk_decline
-					//test
-						echo "Mail Not Okの処理";
-						exit;					
-					
-				}
-				
+				//
 				$this->Asr5500Chksheet->id = $id;
-				//TODO
-				//debug($this->request->data);
-				//no1~最後まで格納
 				$params = array();
 				$params = $this->_set_para_no( $this->request->data['ASR5500Chksheet'] );
 				$this->Asr5500Chksheet->set($params);
 				
 				if ($this->Asr5500Chksheet->save($this->request->data)) {
-					$this->Flash->success(__('データを更新しました'));
-					return $this->redirect(array('action' => 'index'));
+					//$this->Flash->success(__('データを更新しました'));
+					//return $this->redirect(array('action' => 'index'));
+				}else{
+					//更新できなかったら戻る
+					$this->Flash->error(__('Unable to update your post.'));
+					return $this->redirect(array('action' => 'edit'));
 				}
-				$this->Flash->error(__('Unable to update your post.'));
+				
+				//メール送信
+				if(isset($this->request->data['chk_ok'])) {
+					echo "OK--------------";
+						//選択されたメアドを取得
+						//TODO;まとめる
+						$email_to =  $this->request->data['ASR5500Chksheet']['email_to'];
+						$email_to_name;
+						$email_from =  $this->request->data['ASR5500Chksheet']['email_from'];
+						//debug($email_to);
+						//debug($email_from);
+						//
+						//TODO:どこかにまとめる
+						//
+						$email_cqap  = Configure::read("CQAP_MEMBER_EMAIL");
+						foreach($email_cqap as $key => $value){
+							if( $email_to === $key){
+								$email_to_name = $value."さん";
+							}				
+						} 
+						//mail.phpのセッティングを使う
+						$email = new CakeEmail('smtp');
+						$email->from($email_from);
+						$email->to($email_to);
+						$email->subject('[テストメールです。]DailyReport(ASR5500)ダブルチェックチェックOK');
+						$email->emailFormat( 'both');
+						
+						//urlを取得して、idをセット
+						$body = $email_to_name. '<br/><br/>表題の件<br/>ダブルチェックOKです。<br/>DailyReport(ASR5500)配信をお願いします。<br/>';
+						$messages=$email->send( $body );
+						//debug($messages);
+						$this->Flash->success(__('DailyReport(ASR5500)チェック[OK]メールを送信しました。'));
+						return	$this->redirect(array('action' => 'edit', $id));
+				}elseif(isset($this->request->data['chk_decline'])){
+					echo "decline--------------";
+					
+						//選択されたメアドを取得
+						//TODO;まとめる
+						$email_to =  $this->request->data['ASR5500Chksheet']['email_to'];
+						$email_to_name;
+						$email_from =  $this->request->data['ASR5500Chksheet']['email_from'];
+						//debug($email_to);
+						//debug($email_from);
+						//
+						//TODO:どこかにまとめる
+						//
+						$email_cqap  = Configure::read("CQAP_MEMBER_EMAIL");
+						foreach($email_cqap as $key => $value){
+							if( $email_to === $key){
+								$email_to_name = $value."さん";
+							}				
+						} 
+						
+						//mail.phpのセッティングを使う
+						$email = new CakeEmail('smtp');
+						$email->from($email_from);
+						$email->to($email_to);
+						$email->subject('[テストメールです。]DailyReport(ASR5500)ダブルチェックチェックNG');
+						$email->emailFormat( 'both');
+						
+						//urlを取得して、idをセット
+						$url = Router::url('/asr5500chksheets/edit/', true).$id;
+						
+						$body = $email_to_name. '<br/><br/>表題の件<br/>ダブルチェックNGです。<br/>DailyReport(ASR5500)もう一度、確認をお願いします。<br/>'.$url;
+						$messages=$email->send( $body );
+						//debug($messages);
+						//$this->Flash->error(__('DailyReport(ASR5500)チェック[NG]メールを送信しました。'));
+						$this->Flash->success(__('DailyReport(ASR5500)チェック[NG]メールを送信しました。'));
+						return	$this->redirect(array('action' => 'edit', $id));
+				
+				
+				}elseif(isset($this->request->data['chk_resubmit'])){
+						//選択されたメアドを取得
+						//TODO;まとめる
+						$email_to =  $this->request->data['ASR5500Chksheet']['email_to'];
+						$email_to_name;
+						$email_from =  $this->request->data['ASR5500Chksheet']['email_from'];
+						//debug($email_to);
+						//debug($email_from);
+						//
+						//TODO:どこかにまとめる
+						//
+						$email_cqap  = Configure::read("CQAP_MEMBER_EMAIL");
+						foreach($email_cqap as $key => $value){
+							if( $email_to === $key){
+								$email_to_name = $value."さん";
+							}				
+						} 
+						
+						//mail.phpのセッティングを使う
+						$email = new CakeEmail('smtp');
+						$email->from($email_from);
+						$email->to($email_to);
+						$email->subject('[テストメールです。]DailyReport(ASR5500)再度チェックをお願いします。');
+						$email->emailFormat( 'both');
+						
+						//urlを取得して、idをセット
+						$url = Router::url('/asr5500chksheets/edit/', true).$id;
+						
+						$body = $email_to_name. '<br/><br/>表題の件<br/>再度チェックを致しました。<br/>DailyReport(ASR5500)お手数ですが、もう一度、確認をお願いします。<br/>'.$url;
+						$messages=$email->send( $body );
+						//debug($messages);
+						//$this->Flash->error(__('DailyReport(ASR5500)チェック[NG]メールを送信しました。'));
+						$this->Flash->success(__('DailyReport(ASR5500)再度確認依頼メールを送信しました。'));
+						return	$this->redirect(array('action' => 'edit', $id));
+						
+				}elseif(isset($this->request->data['chk_rewrite'])){
+					$this->Flash->success(__('データを修正しました。'));
+					return	$this->redirect(array('action' => 'edit', $id));
+				}
 			}
 			//if (!$this->request->data) {
 			//	$this->request->data = $Asr5500Chksheet;
-			//}		
+			//}	
 			
 			
 		}
@@ -247,12 +335,32 @@ class Asr5500ChksheetsController extends AppController {
         }
 	}
 	
+	public function delete($id) {
+		//キー項目がセットされてるか？
+		if (!$id) {
+			throw new NotFoundException(__('キー項目が渡されてきていない。'));
+			//exit;
+		}else{
+			$this->Asr5500Chksheet->id = $id;
+			//if ($this->Asr5500Chksheet->deleteAll($id)) {
+			if ($this->Asr5500Chksheet->delete($id)) {
+				$this->Flash->success(__('No:'. $id .' has been deleted'));			
+				return $this->redirect(array('action'=>'index'));
+			}else{
+				
+				$this->Flash->error(__('Unable to delete your post.'));
+				return $this->redirect(array('action'=>'index'));
+			}
+			
+		}
+	}
+	
 	public function beforeFilter() {
 		parent::beforeFilter();
 		    $cqap_member = array(
-				"野田" => "野田", 
-				"岡田（トシ）" => "岡田(トシ)", 
-				"中林" => "中林", 
+				//"野田" => "野田", 
+				//"岡田（トシ）" => "岡田(トシ)", 
+				//"中林" => "中林", 
 				"古川" => "古川", 
 				"五十嵐" => "五十嵐"
 				);

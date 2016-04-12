@@ -83,6 +83,8 @@ $config["NO31_CONTENT"] = "日付は祝日当日になっているか？（入�
 $config["NO32_CONTENT"] = "休日と次回配信日の日付は合っているか？";
 $config["NO33_CONTENT"] = "機密保持のお願い文は挿入されているか？<br/>This email may contain confidential ～";
 $config["NO34_CONTENT"] = "【手動】コロンをASR5500の後にコロン(:)付与したか？<br/>(プログラムで打ち出し)[Summary] CQAP ASR5500 daily report as of ～<br/>(完成系)[Summary] CQAP: ASR5500 daily report as of ～";
+
+//TODO:データベース化
 $config["CQAP_MEMBER_EMAIL"] = array(
 				"noda@hnps.co.jp" => "野田", 
 				"toshiokada@hnps.co.jp" => "岡田(トシ)", 

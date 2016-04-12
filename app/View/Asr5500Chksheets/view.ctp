@@ -1,9 +1,45 @@
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script>
+$(function() {
+	$("ul>li:eq(1)>a").on('click', function(){
+		var id_del=$("#Asr5500ChksheetDelete").val();
+		var msg= "Are you sure you want to delete " + id_del + "?"; 
+		if(!confirm(msg)){return false;}
+	});
+});
+</script>
+
 <?php
 /*初期設定などあれば*/
 /*メッセージを組み立てる*/
 //debug($Asr5500Chksheet);
+
+//$test=$this->Cqap->getEmailAddress($Asr5500Chksheet['Asr5500Chksheet']['name1']);
+//debug($test);
+
+
 $options_name1 = array('label'=>'作成者', 'type'=>'select', 'options'=>$cqap_member, 'selected'=>$Asr5500Chksheet['Asr5500Chksheet']['name1'], 'disabled'=>'disabled');
 $options_name2 = array('label'=>'確認者', 'type'=>'select', 'options'=>$cqap_member, 'selected'=>$Asr5500Chksheet['Asr5500Chksheet']['name2'], 'disabled'=>'disabled');
+
+//TODO:処理まとめる
+function get_email($_name ){
+	$email_cqap  = Configure::read("CQAP_MEMBER_EMAIL");
+	//debug($email_cqap);
+	foreach($email_cqap as $email => $name){
+		if( $_name === $name){
+			return $email;
+		}				
+	}
+}
+
+$options_mail_1_selected=get_email($Asr5500Chksheet['Asr5500Chksheet']['name1']);
+$options_mail_2_selected=get_email($Asr5500Chksheet['Asr5500Chksheet']['name2']);
+//debug($options_mail_1_selected);
+//debug($options_mail_2_selected);
+
+
+$options_mail_1 = array('div' => false, 'label'=> '（メール:To）'   , 'type' => 'select', 'options'=>$cqap_member_mail,   'selected'=>$options_mail_1_selected );
+$options_mail_2 = array('div' => false, 'label'=> '（メール:From）' , 'type' => 'select', 'options'=>$cqap_member_mail,   'selected'=>$options_mail_2_selected );
 
 
 $options_chkbox_unchecked =array('div' => false, 'label'=> false , 'type' => 'checkbox', 'checked' =>false , 'disabled'=>'disabled' );
@@ -537,18 +573,25 @@ foreach($Asr5500Chksheet['Asr5500Chksheet'] as $key => $value ){
 		</table>			
 	</fieldset>
 <?php //echo $this->Form->end(); ?>
-<?php echo $this->Form->input('ASR5500Chksheet.email_to', array('div' => false, 'label'=> '確認者（メール:To）' , 'type' => 'select', 'options'=>$cqap_member_mail)); ?>
-<?php echo $this->Form->input('ASR5500Chksheet.email_from', array('div' => false, 'label'=> '依頼者（メール:From）' , 'type' => 'select', 'options'=>$cqap_member_mail)); ?>
+<?php echo $this->Form->input('ASR5500Chksheet.email_to', $options_mail_2 ); ?>
+<?php echo $this->Form->input('ASR5500Chksheet.email_from', $options_mail_1 ); ?>
 <?php echo $this->Form->submit(__('ダブルチェックお願い'), array('name' => 'mail_to_checker')); ?>
 </div>
 <div class="actions">
 	<h3><?php  echo __(Configure::read("ACTIONS")); ?></h3>
-	
 	<ul>
-		<li><?php echo $this->Html->link(__(Configure::read("EDIT_ACTION")), array('action' => 'edit', $Asr5500Chksheet['Asr5500Chksheet']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__( Configure::read("DELETE_ACTION") ), array('action' => 'delete', $Asr5500Chksheet['Asr5500Chksheet']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $Asr5500Chksheet['Asr5500Chksheet']['id']))); ?> </li>
+		<li><?php echo $this->Html->link(__(Configure::read("EDIT_ACTION")), array('action' => 'edit' ,  $Asr5500Chksheet['Asr5500Chksheet']['id'])); ?> </li>
+		<!--
+		<li>
+			<?php  echo $this->Form->postLink(__( Configure::read("DELETE_ACTION") ), array('action' => 'delete', $Asr5500Chksheet['Asr5500Chksheet']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $Asr5500Chksheet['Asr5500Chksheet']['id']))); ?> 
+		</li>
+		-->
+		<li>
+			<?php echo $this->Html->link(__(Configure::read("DELETE_ACTION")), array('action' => 'delete', $Asr5500Chksheet['Asr5500Chksheet']['id'])); ?> 
+			<?php echo $this->Form->hidden(__(Configure::read("DELETE_ACTION")), array('value' => $Asr5500Chksheet['Asr5500Chksheet']['id'])); ?> 
+		
+		</li>
 		<li><?php echo $this->Html->link(__(Configure::read("INDEX_ACTION")), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__(Configure::read("ADD_ACTION")), array('action' => 'add')); ?> </li>
 	</ul>
-	
 </div>
