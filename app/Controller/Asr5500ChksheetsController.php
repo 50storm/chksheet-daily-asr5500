@@ -65,17 +65,81 @@ class Asr5500ChksheetsController extends AppController {
 	
 	public function view($id = null){
 		//debug($this->params);
+	
 		//キー項目がセットされてるか？
 		if (!$id) {
 			throw new NotFoundException(__('キー項目が渡されてきていない。'));
 			//exit;
 		}else{
-			$this->Asr5500Chksheet->id = $this->params->pass;
-			$record = $this->Asr5500Chksheet->read();
-			$this->set('Asr5500Chksheet' , $this->Asr5500Chksheet->read());
+			//TODO:
+			
+			
+			
+			
+			if(isset($this->request->data['mail_to_checker'])) {
+				//メール送信の場合
+				//TODO:try~catch入れる
+				
+				
+				
+				//echo "メール送信の場合";
+				$email_to =  $this->request->data['ASR5500Chksheet']['email_to'];
+				$email_to_name;
+				$email_from =  $this->request->data['ASR5500Chksheet']['email_from'];
+				
+				
+				
+				$email_cqap  = Configure::read("CQAP_MEMBER_EMAIL");
+				//debug($adds);exit;
+				foreach($email_cqap as $key => $value){
+					if( $email_to === $key){
+						$email_to_name = $value."さん";
+					}				
+				} 
+				
+				//debug($email_to_name );
+				//exit;
+				
+				//debug(Router::url('/asr5500chksheets/edit/', true));
+				$url = Router::url('/asr5500chksheets/edit/', true).$id;
+				
+				//exit;
+				
+				//mail.phpのセッティングを使う
+				$email = new CakeEmail('smtp');
+				//debug($email);
+				//exit;
+				
+				//$email->transport('Smtp');
+				
+				$email->from($email_from);
+				$email->to($email_to);
+				$email->subject('[テストメールです。]DailyReport(ASR5500)ダブルチェックのお願い');
+				$email->emailFormat( 'both');
+				//urlを取得して、idをセット
+				//debug($cqap_member_mail);
+				//exit;
+				
+				
+				$body = $email_to_name. '<br/><br/>表題の件<br/>ダブルチェックお願いします<br/>' .$url;
+				$messages=$email->send( $body );
+				//debug($messages);
+				
+				$this->Flash->success(__('ダブルチェックのお願いメールを送信しました。'));
+					
+				
+			}
+			//else{
+				//echo "test0000000000-------------";
+				//Viewにデータ表示の場合
+				
+				$this->Asr5500Chksheet->id = $this->params->pass;
+				$record = $this->Asr5500Chksheet->read();
+				$this->set('Asr5500Chksheet' , $this->Asr5500Chksheet->read());		
+			//}
 		}
 	}
-	
+
 	public function edit($id = null) {
 		//debug($this->params->pass);
 		//debug($this->request->is('post'));
@@ -99,6 +163,18 @@ class Asr5500ChksheetsController extends AppController {
 				//editへ自動で戻る
 			
 			}elseif ($this->request->is(array('post', 'put'))) {
+				
+				if(isset($this->request->data['chk_ok'])) {
+						echo "Mail Okの処理";
+						exit;
+				}elseif(isset($this->request->data['chk_decline'])){
+					//chk_decline
+					//test
+						echo "Mail Not Okの処理";
+						exit;					
+					
+				}
+				
 				$this->Asr5500Chksheet->id = $id;
 				//TODO
 				//debug($this->request->data);
@@ -146,7 +222,6 @@ class Asr5500ChksheetsController extends AppController {
         if ($this->request->is('post')) {
 			/*SQLパラメータを組み立てる*/
 			//日付
-			
 			$input_date = $this->_make_date($this->request->data['ASR5500Chksheet']['date']['year'], 
 							$this->request->data['ASR5500Chksheet']['date']['month'],
 							$this->request->data['ASR5500Chksheet']['date']['day']
@@ -182,6 +257,17 @@ class Asr5500ChksheetsController extends AppController {
 				"五十嵐" => "五十嵐"
 				);
 			$this->set('cqap_member', $cqap_member);
+			
+			
+			$cqap_member_mail = array(
+				//"noda@hnps.co.jp" => "野田", 
+				//"toshiokada@hnps.co.jp" => "岡田(トシ)", 
+				//"nakabayashi@hnps.co.jp" => "中林", 
+				"furukawa@hnps.co.jp" => "古川", 
+				"igarashi@hnps.co.jp" => "五十嵐"
+				);
+			$this->set('cqap_member_mail', $cqap_member_mail);
+			
 
 	}
 

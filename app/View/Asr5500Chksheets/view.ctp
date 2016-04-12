@@ -18,6 +18,8 @@ foreach($Asr5500Chksheet['Asr5500Chksheet'] as $key => $value ){
 		$options_chkbox[$key ] = $value ? $options_chkbox_checked : $options_chkbox_unchecked ;
 	}
 }
+
+
 ?>
 <div class="view">
 <?php echo $this->Form->create(); ?>
@@ -534,7 +536,10 @@ foreach($Asr5500Chksheet['Asr5500Chksheet'] as $key => $value ){
 		</tr>
 		</table>			
 	</fieldset>
-<?php echo $this->Form->end(); ?>
+<?php //echo $this->Form->end(); ?>
+<?php echo $this->Form->input('ASR5500Chksheet.email_to', array('div' => false, 'label'=> '確認者（メール:To）' , 'type' => 'select', 'options'=>$cqap_member_mail)); ?>
+<?php echo $this->Form->input('ASR5500Chksheet.email_from', array('div' => false, 'label'=> '依頼者（メール:From）' , 'type' => 'select', 'options'=>$cqap_member_mail)); ?>
+<?php echo $this->Form->submit(__('ダブルチェックお願い'), array('name' => 'mail_to_checker')); ?>
 </div>
 <div class="actions">
 	<h3><?php  echo __(Configure::read("ACTIONS")); ?></h3>

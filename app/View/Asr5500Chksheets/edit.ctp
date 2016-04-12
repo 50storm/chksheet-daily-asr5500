@@ -1,7 +1,7 @@
 <?php 
 /*  Helper で使うセッテイング */
 /* チェックボックス */
-//debug($Asr5500Chksheet);
+// debug($Asr5500Chksheet);
 $options_name1 = array('label'=>'作成者', 'type'=>'select', 'options'=>$cqap_member, 'selected'=>$Asr5500Chksheet['Asr5500Chksheet']['name1']);
 $options_name2 = array('label'=>'確認者', 'type'=>'select', 'options'=>$cqap_member, 'selected'=>$Asr5500Chksheet['Asr5500Chksheet']['name2']);
 
@@ -24,16 +24,12 @@ foreach($Asr5500Chksheet['Asr5500Chksheet'] as $key => $value ){
 <div class="notes form">
 <?php echo $this->Form->create('ASR5500Chksheet'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit:').h($Asr5500Chksheet['Asr5500Chksheet']['date']); ?></legend>
-		<?php // echo $this->Form->input('ASR5500Chksheet.date', array('label' => '日付：', 'dateFormat' => 'YMD', 'minYear'=> date('Y')-1,'maxYear' => date('Y')+1, 'monthNames' => false  )); ?>
-		<?php // echo __('ダブルチェック:').h($Asr5500Chksheet['Asr5500Chksheet']['date']);?>
-		
+		<legend><?php  echo __('Edit:').h($Asr5500Chksheet['Asr5500Chksheet']['date']); ?></legend>
 		<table>
 		<tr>
 			<th>
 				シート
 			</th>
-			
 			<th>
 				項目
 			</th>
@@ -45,7 +41,7 @@ foreach($Asr5500Chksheet['Asr5500Chksheet'] as $key => $value ){
 			</th>
 			<th>
 				<?php echo $this->Form->input('ASR5500Chksheet.name2', $options_name2); ?>	
-			</th>>
+			</th>
 		</tr>
 		<tr>
 		
@@ -539,7 +535,11 @@ foreach($Asr5500Chksheet['Asr5500Chksheet'] as $key => $value ){
 		</tr>
 		</table>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<?php // echo $this->Form->end(__('Submit')); ?>
+<?php echo $this->Form->input('ASR5500Chksheet.email_to', array('div' => false, 'label'=> '確認者（メール:To）' , 'type' => 'select', 'options'=>$cqap_member_mail)); ?>
+<?php echo $this->Form->input('ASR5500Chksheet.email_from', array('div' => false, 'label'=> '依頼者（メール:From）' , 'type' => 'select', 'options'=>$cqap_member_mail)); ?>
+<?php echo $this->Form->submit(__('メ―ル送信依頼[OK]'), array('name' => 'chk_ok')); ?>
+<?php echo $this->Form->submit(__('メ―ル送信依頼[NG]'), array('name' => 'chk_decline')); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __(Configure::read("ACTIONS")); ?></h3>
