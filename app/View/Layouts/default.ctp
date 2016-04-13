@@ -57,6 +57,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		-->
 			
 			<h1><?php echo $this->Html->link('AWS Quality Center', 'http://pdidbserver' ,array('target'=>'_blank')); ?></h1>
+			<h1><?php echo $this->Html->link('UIサンプル作成中', 'http://www.dev.igarashi.com/dev/ui_sample/datechecker/ui_sample.html' ,array('target'=>'_blank')); ?></h1>
+			<h1><?php echo $this->Html->link('メモアプリ作成中', 'http://www.dev.igarashi.com:8080/memo/' ,array('target'=>'_blank')); ?></h1>
+			<h1><?php echo $this->Html->link('リンクごっタ煮', 'http://www.dev.igarashi.com/dev/links.html' ,array('target'=>'_blank')); ?></h1>
 			
 		</div>
 		<div id="content">

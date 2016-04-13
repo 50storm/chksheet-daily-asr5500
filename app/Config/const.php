@@ -47,6 +47,7 @@ $config["ATMNT"] = "添付ファイル写真";
 /*　確認内容　*/
 //ASR5500_Summary
 $config["NO1_CONTENT"] = "日付は当日になっているか？";
+//$config["NO1_CONTENT"] = "なまえを変えました";
 $config["NO2_CONTENT"] = "【手動】コロンを付与したか？[Summary]CQAP:ASR5500~";
 $config["NO3_CONTENT"] = "Inspection QTYの数量は正しいか？";
 $config["NO4_CONTENT"] = "【手動】HWWNがあるときに、Defect QTYの数量から、HWWNを差し引いたか？";
