@@ -357,6 +357,9 @@ class Sqlserver extends DboSource {
 			}
 		}
 		$result = parent::create($model, array_keys($fields), array_values($fields));
+		//igarashi
+		//debug($result);
+		
 		if (array_key_exists($primaryKey, $fields) && !empty($fields[$primaryKey])) {
 			$this->_execute('SET IDENTITY_INSERT ' . $this->fullTableName($model) . ' OFF');
 		}

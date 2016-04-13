@@ -358,9 +358,9 @@ class Asr5500ChksheetsController extends AppController {
 	public function beforeFilter() {
 		parent::beforeFilter();
 		    $cqap_member = array(
-				//"野田" => "野田", 
-				//"岡田（トシ）" => "岡田(トシ)", 
-				//"中林" => "中林", 
+				"野田" => "野田", 
+				"岡田（トシ）" => "岡田(トシ)", 
+				"中林" => "中林", 
 				"古川" => "古川", 
 				"五十嵐" => "五十嵐"
 				);
@@ -368,9 +368,9 @@ class Asr5500ChksheetsController extends AppController {
 			
 			
 			$cqap_member_mail = array(
-				//"noda@hnps.co.jp" => "野田", 
-				//"toshiokada@hnps.co.jp" => "岡田(トシ)", 
-				//"nakabayashi@hnps.co.jp" => "中林", 
+				"noda@hnps.co.jp" => "野田", 
+				"toshiokada@hnps.co.jp" => "岡田(トシ)", 
+				"nakabayashi@hnps.co.jp" => "中林", 
 				"furukawa@hnps.co.jp" => "古川", 
 				"igarashi@hnps.co.jp" => "五十嵐"
 				);

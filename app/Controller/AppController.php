@@ -34,28 +34,30 @@ App::uses('CakeEmail', 'Network/Email');
 class AppController extends Controller {
 	
 	//Page 933
-	/*
 	public $components = array(
 		'Flash',
-		'Auth' => array(
-			'loginRedirect' => array(
-			'controller' => 'posts',
-			'action' => 'index'
-		),
-		'logoutRedirect' => array(
-			'controller' => 'pages',
-			'action' => 'display',
-			'home'
-		),
-		'authenticate' => array(
-			'Form' => array(
-			'passwordHasher' => 'Blowfish'
-			)
-			)
-		)
+
+		//'Auth' => array(
+		//	'loginRedirect' => array(
+		//	'controller' => 'Asr5500Chksheets',
+		//	'action' => 'index'
+		//),
+		//'logoutRedirect' => array(
+		//	'controller' => 'Asr5500Chksheets',
+		//	'action' => 'index',
+		//	'home'
+		//),
+		//認証の種類を設定
+		//'authenticate' => array(
+		//	'Form' => array(
+		//		//'passwordHasher' => 'Blowfish'
+		//		)
+		//	)
+		//)
 	);
-	*/
+	
 	public function beforeFilter() {
+		//$this->Auth->allow('index', 'view', 'add');
 		//$this->Auth->allow('index', 'view');
 	}	
 }
