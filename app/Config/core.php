@@ -219,7 +219,8 @@
  * the cake shell command: cake schema create Sessions
  */
 	Configure::write('Session', array(
-		'defaults' => 'php'
+		'defaults' => 'php', 
+		'timeout' =>  1 //単位は分
 	));
 
 /**

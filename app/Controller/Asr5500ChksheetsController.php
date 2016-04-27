@@ -60,9 +60,8 @@ class Asr5500ChksheetsController extends AppController {
 		//				'order' => array('Note.date Desc','Note.time Desc')
 		//);
 		//$this->set('notes' , $this->Note->find('all', $options));
-		
-		
 		//debug($this->paginate());
+
 		$this->set('asr5500_chksheets',$this->paginate());
 	}
 

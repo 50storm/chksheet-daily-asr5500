@@ -35,10 +35,10 @@ $config["SHEET_H"] =  "ASR5500_H";
 
 
 /*項目*/
-$config["TITLE"] = "タイトル";
 $config["HEADER"] = "ヘッダー";
 $config["CONTENT"] = "本文";
 $config["CONTENT_DFT"] = "不良本文";
+$config["TITLE"] = "タイトル";
 $config["FOOTER"] = "フッター";
 $config["MAIL_NUM"] = "メールの個数";
 $config["ATMNT"] = "添付ファイル写真";
@@ -93,3 +93,5 @@ $config["CQAP_MEMBER_EMAIL"] = array(
 				"furukawa@hnps.co.jp" => "古川", 
 				"igarashi@hnps.co.jp" => "五十嵐"
 				);
+				
+				
